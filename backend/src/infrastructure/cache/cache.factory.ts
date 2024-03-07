@@ -1,5 +1,5 @@
-import { FactoryProvider } from '@nestjs/common';
-import { Redis } from 'ioredis';
+import { FactoryProvider } from '@nestjs/common'
+import { Redis } from 'ioredis'
 
 export const CacheClientFactory: FactoryProvider<Redis> = {
   provide: 'RedisClient',
@@ -7,13 +7,13 @@ export const CacheClientFactory: FactoryProvider<Redis> = {
     const redisInstance = new Redis({
       host: process.env.REDIS_HOST,
       port: +process.env.REDIS_PORT,
-    });
+    })
 
     redisInstance.on('error', (e) => {
-      throw new Error(`Redis connection failed: ${e}`);
-    });
+      throw new Error(`Redis connection failed: ${e}`)
+    })
 
-    return redisInstance;
+    return redisInstance
   },
   inject: [],
-};
+}
