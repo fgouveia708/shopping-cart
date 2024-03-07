@@ -15,6 +15,9 @@
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "paths": {
+      "@services/*": ["./src/core/services/*"],
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
