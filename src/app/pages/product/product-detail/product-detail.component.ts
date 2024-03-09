@@ -97,7 +97,7 @@ export class ProductDetailComponent implements AfterViewInit {
 
   success() {
     Swal.fire({
-      title: 'Produto acionado no carrinho.',
+      title: 'Product added to cart.',
       icon: 'success',
       showConfirmButton: false,
       timer: 2000,

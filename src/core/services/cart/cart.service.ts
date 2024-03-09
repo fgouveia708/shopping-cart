@@ -8,7 +8,7 @@ import { Cart } from './dtos/cart.request';
   providedIn: 'root',
 })
 export class CartService {
-  private subject = new Subject<Cart>();
+  private subject = new Subject<Cart | null>();
   constructor(private localStorageService: LocalStorageService) {}
 
   saveCart(cart: Cart) {
@@ -22,6 +22,7 @@ export class CartService {
 
   cleanCart() {
     this.localStorageService.removeItem(LocalStorageConstant.CART);
+    this.subject.next(null);
   }
 
   quantityItems(): number {

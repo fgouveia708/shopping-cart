@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.quantityItemsCart = this.cartService.quantityItems();
 
     this.subscription = this.cartService.getObservable().subscribe((c) => {
-      this.quantityItemsCart = c.items.length;
+      this.quantityItemsCart = c ? c.items.length : 0;
     });
 
     this.cartService.getObservable();
