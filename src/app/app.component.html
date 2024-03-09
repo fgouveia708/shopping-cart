@@ -1,34 +1,21 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Shopping Cart</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mx-5 mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Products</a>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> -->
-      </ul>
-      <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
-    </div>
+
+    <ul class="navbar-nav me-auto mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/product">Products</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="d-none d-md-block me-5">
+    <span class="position-relative" (onClick)="openCart()" style="cursor: pointer">
+      <i class="fas fa-shopping-cart" style="color: white; font-size: 20px"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{
+        quantityItemsCart
+      }}</span>
+    </span>
   </div>
 </nav>
 
@@ -42,6 +29,5 @@
       <a href="#">Back to top</a>
     </p>
     <p class="mb-1">Shopping Cart is an example created by Fernando Gouveia.</p>
-    <!-- <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p> -->
   </div>
 </footer>

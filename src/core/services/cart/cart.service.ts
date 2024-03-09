@@ -9,15 +9,20 @@ import { CartRequest } from './dtos/cart.request';
 export class CartService {
   constructor(private localStorageService: LocalStorageService) {}
 
-  public saveCart(cart: CartRequest) {
+  saveCart(cart: CartRequest) {
     this.localStorageService.save(LocalStorageConstant.CART, cart);
   }
 
-  public getCart(): CartRequest | null {
-    return this.localStorageService.get(LocalStorageConstant.CART);
+  getCart(): CartRequest | null {
+    return this.localStorageService.get<CartRequest>(LocalStorageConstant.CART);
   }
 
-  public cleanCart() {
+  cleanCart() {
     this.localStorageService.removeItem(LocalStorageConstant.CART);
+  }
+
+  quantityItems(): number {
+    const cart = this.localStorageService.get<CartRequest>(LocalStorageConstant.CART);
+    return cart ? cart.items.length : 0;
   }
 }
