@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '@services/cart/cart.service';
-import { CartRequest } from '@services/cart/dtos/cart.request';
+import { Cart } from '@services/cart/dtos/cart.request';
 import { Product } from '@services/product/dtos/product.response';
 
 @Component({
@@ -9,7 +9,7 @@ import { Product } from '@services/product/dtos/product.response';
   styleUrl: './cart.component.scss',
 })
 export class CartComponent implements OnInit {
-  cart!: CartRequest | null;
+  cart!: Cart | null;
 
   constructor(private cartService: CartService) {}
 

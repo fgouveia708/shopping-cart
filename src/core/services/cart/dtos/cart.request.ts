@@ -1,6 +1,6 @@
 import { Product } from '@services/product/dtos/product.response';
 
-export interface CartRequest {
+export interface Cart {
   createdAt: Date;
   total: number;
   items: ItemRequest[];

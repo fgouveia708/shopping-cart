@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '@services/cart/cart.service';
-import { CartRequest } from '@services/cart/dtos/cart.request';
+import { Cart } from '@services/cart/dtos/cart.request';
 import { Product } from '@services/product/dtos/product.response';
 import { ProductService } from '@services/product/product.service';
 import Swal from 'sweetalert2';
@@ -56,7 +56,7 @@ export class ProductDetailComponent implements AfterViewInit {
     this.success();
   }
 
-  addToExistingCart(cart: CartRequest, item: Product, quantity: number) {
+  addToExistingCart(cart: Cart, item: Product, quantity: number) {
     const existingItemIndex = cart.items.findIndex((cartItem) => cartItem.product.name === item.name);
 
     if (existingItemIndex !== -1) {
@@ -70,7 +70,7 @@ export class ProductDetailComponent implements AfterViewInit {
     cart.total = this.calculateTotal(cart);
   }
 
-  createCart(item: Product, quantity: number): CartRequest {
+  createCart(item: Product, quantity: number): Cart {
     return {
       createdAt: new Date(),
       total: parseFloat(item.price) * quantity,
@@ -78,7 +78,7 @@ export class ProductDetailComponent implements AfterViewInit {
     };
   }
 
-  calculateTotal(cart: CartRequest): number {
+  calculateTotal(cart: Cart): number {
     return cart.items.reduce((total, item) => {
       const itemTotal = parseFloat(item.product.price) * item.quantity;
       return total + itemTotal;
