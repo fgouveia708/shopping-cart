@@ -1,4 +1,4 @@
-<div class="album py-4">
+<div class="py-4">
   <div class="container">
     @if (isLoading) {
       <div class="d-flex justify-content-center">
@@ -15,6 +15,7 @@
           <span class="py-2 d-sm-none"></span>
           <h2>{{ product.name | uppercase }}</h2>
           <p>{{ product.detail }}</p>
+          <p class="text-muted">{{ product.info }}</p>
           <p>{{ product.price | currency }}</p>
           <div class="row">
             <div class="col-6 col-sm-3">

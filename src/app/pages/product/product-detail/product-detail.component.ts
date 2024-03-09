@@ -2,7 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '@services/cart/cart.service';
 import { CartRequest } from '@services/cart/dtos/cart.request';
-import { ProductResponse } from '@services/product/dtos/product.response';
+import { Product } from '@services/product/dtos/product.response';
 import { ProductService } from '@services/product/product.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrl: './product-detail.component.scss',
 })
 export class ProductDetailComponent implements AfterViewInit {
-  product!: ProductResponse;
+  product!: Product;
   isLoading: boolean = true;
   quantity: number = 1;
 
@@ -42,7 +42,7 @@ export class ProductDetailComponent implements AfterViewInit {
     });
   }
 
-  addCart(item: ProductResponse, quantity: number) {
+  addCart(item: Product, quantity: number) {
     console.log({ item, quantity });
     let cart = this.cartService.getCart();
 
@@ -56,7 +56,7 @@ export class ProductDetailComponent implements AfterViewInit {
     this.success();
   }
 
-  addToExistingCart(cart: CartRequest, item: ProductResponse, quantity: number) {
+  addToExistingCart(cart: CartRequest, item: Product, quantity: number) {
     const existingItemIndex = cart.items.findIndex((cartItem) => cartItem.product.name === item.name);
 
     if (existingItemIndex !== -1) {
@@ -70,7 +70,7 @@ export class ProductDetailComponent implements AfterViewInit {
     cart.total = this.calculateTotal(cart);
   }
 
-  createCart(item: ProductResponse, quantity: number): CartRequest {
+  createCart(item: Product, quantity: number): CartRequest {
     return {
       createdAt: new Date(),
       total: parseFloat(item.price) * quantity,

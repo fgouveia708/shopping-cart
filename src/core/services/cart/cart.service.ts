@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from '@services/local-storage/local-storage.service';
+import { Subject } from 'rxjs';
 import { LocalStorageConstant } from '../../constants/local-storage-constant';
 import { CartRequest } from './dtos/cart.request';
 
@@ -7,10 +8,12 @@ import { CartRequest } from './dtos/cart.request';
   providedIn: 'root',
 })
 export class CartService {
+  private subject = new Subject<CartRequest>();
   constructor(private localStorageService: LocalStorageService) {}
 
   saveCart(cart: CartRequest) {
     this.localStorageService.save(LocalStorageConstant.CART, cart);
+    this.subject.next(cart);
   }
 
   getCart(): CartRequest | null {
@@ -22,7 +25,11 @@ export class CartService {
   }
 
   quantityItems(): number {
-    const cart = this.localStorageService.get<CartRequest>(LocalStorageConstant.CART);
+    const cart = this.getCart();
     return cart ? cart.items.length : 0;
+  }
+
+  getObservable() {
+    return this.subject.asObservable();
   }
 }

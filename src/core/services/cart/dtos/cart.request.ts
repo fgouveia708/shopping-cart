@@ -1,4 +1,4 @@
-import { ProductResponse } from '@services/product/dtos/product.response';
+import { Product } from '@services/product/dtos/product.response';
 
 export interface CartRequest {
   createdAt: Date;
@@ -7,6 +7,6 @@ export interface CartRequest {
 }
 
 interface ItemRequest {
-  product: ProductResponse;
+  product: Product;
   quantity: number;
 }

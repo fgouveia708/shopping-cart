@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductResponse } from '@services/product/dtos/product.response';
+import { Product } from '@services/product/dtos/product.response';
 import { ProductService } from '@services/product/product.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ProductService } from '@services/product/product.service';
   styleUrl: './product-list.component.scss',
 })
 export class ProductListComponent implements OnInit {
-  products: ProductResponse[] = [];
-  heroProducts: ProductResponse[] = [];
+  products: Product[] = [];
+  heroProducts: Product[] = [];
   constructor(
     private productService: ProductService,
     private router: Router,
