@@ -1,5 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '@services/cart/cart.service';
+import { CartRequest } from '@services/cart/dtos/cart.request';
 import { ProductResponse } from '@services/product/dtos/product.response';
 import { ProductService } from '@services/product/product.service';
 import Swal from 'sweetalert2';
@@ -14,9 +16,10 @@ export class ProductDetailComponent implements AfterViewInit {
   quantity: number = 1;
 
   constructor(
-    private productService: ProductService,
     private router: Router,
     private activeRoute: ActivatedRoute,
+    private productService: ProductService,
+    private cartService: CartService,
   ) {}
 
   ngAfterViewInit(): void {
@@ -39,8 +42,47 @@ export class ProductDetailComponent implements AfterViewInit {
     });
   }
 
-  addCart(item: ProductResponse) {
+  addCart(item: ProductResponse, quantity: number) {
+    console.log({ item, quantity });
+    let cart = this.cartService.getCart();
+
+    if (cart) {
+      this.addToExistingCart(cart, item, quantity);
+    } else {
+      cart = this.createCart(item, quantity);
+    }
+
+    this.cartService.saveCart(cart);
     this.success();
+  }
+
+  addToExistingCart(cart: CartRequest, item: ProductResponse, quantity: number) {
+    const existingItemIndex = cart.items.findIndex((cartItem) => cartItem.product.name === item.name);
+
+    if (existingItemIndex !== -1) {
+      cart.items[existingItemIndex].quantity = quantity;
+    } else {
+      cart.items.push({
+        product: item,
+        quantity: quantity,
+      });
+    }
+    cart.total = this.calculateTotal(cart);
+  }
+
+  createCart(item: ProductResponse, quantity: number): CartRequest {
+    return {
+      createdAt: new Date(),
+      total: parseFloat(item.price) * quantity,
+      items: [{ product: item, quantity: quantity }],
+    };
+  }
+
+  calculateTotal(cart: CartRequest): number {
+    return cart.items.reduce((total, item) => {
+      const itemTotal = parseFloat(item.product.price) * item.quantity;
+      return total + itemTotal;
+    }, 0);
   }
 
   increment() {
