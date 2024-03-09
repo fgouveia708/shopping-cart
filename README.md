@@ -10,9 +10,8 @@ This project is an Angular demo of how to implement the shopping cart.
   - 1.1.1 [Install the Angular](#Installtheangular)
   - 1.1.2 [Install the dependencies](#Installthedependencies)
 - 1.2. [Running the app](#RunningTheApp)
-- 1.3. [Test](#Test)
-- 1.4. [Build](#Build)
-- 1.5. [Acess the App](#Accesstheapp)
+- 1.3. [Build](#Build)
+- 1.4. [Acess the App](#Accesstheapp)
 
 ## 1. <a name='Gettingstarted'></a>Getting started
 
@@ -43,13 +42,7 @@ Run to install the dependencies:
  npm run start
 ```
 
-### 1.3. <a name='Test'></a>Test
-
-```bash
- npm run test
-```
-
-### 1.4. <a name='Build'></a>Build
+### 1.3. <a name='Build'></a>Build
 
 ```bash
  npm run build
