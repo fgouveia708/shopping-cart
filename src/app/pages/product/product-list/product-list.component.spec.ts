@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProductService } from '@services/product/product.service';
 import { of } from 'rxjs';
 import { ProductListComponent } from './product-list.component';
@@ -13,7 +14,7 @@ describe('ProductListComponent', () => {
     const productServiceSpy = jasmine.createSpyObj('ProductService', ['getProducts']);
 
     await TestBed.configureTestingModule({
-      imports: [ProductListComponent],
+      imports: [ProductListComponent, HttpClientTestingModule],
       providers: [{ provide: ProductService, useValue: productServiceSpy }],
     }).compileComponents();
 
