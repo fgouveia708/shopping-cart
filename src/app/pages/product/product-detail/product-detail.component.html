@@ -1,1 +1,42 @@
-<p>product-detail works!</p>
+<div class="album py-4">
+  <div class="container">
+    @if (isLoading) {
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else {
+      <div class="row">
+        <div class="col-sm-3">
+          <img [src]="product.image" style="width: 100%" class="img-fluid" />
+        </div>
+        <div class="col-sm-9 mt-sm-3">
+          <span class="py-2 d-sm-none"></span>
+          <h2>{{ product.name | uppercase }}</h2>
+          <p>{{ product.detail }}</p>
+          <p>{{ product.price | currency }}</p>
+          <div class="row">
+            <div class="col-6 col-sm-3">
+              <div class="input-group">
+                <button class="btn btn-outline-secondary" (click)="decrement()">-</button>
+                <input type="text" class="form-control text-center" [value]="quantity" readonly />
+                <button class="btn btn-outline-secondary" (click)="increment()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary" type="button" (click)="addCart(product)">
+                  Adicionar no carrinho
+                </button>
+                <button class="btn btn-secondary" type="button">Comprar agora</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
