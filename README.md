@@ -1,27 +1,66 @@
-# ShoppingCart
+# Shopping Cart
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+This project is an Angular demo of how to implement the shopping cart.
 
-## Development server
+## Summary
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. [Getting started](#Gettingstarted)
 
-## Code scaffolding
+- 1.1. [Installation](#Installation)
+  - 1.1.1 [Install the Angular](#Installtheangular)
+  - 1.1.2 [Install the dependencies](#Installthedependencies)
+- 1.2. [Running the app](#RunningTheApp)
+- 1.3. [Test](#Test)
+- 1.4. [Build](#Build)
+- 1.5. [Acess the App](#Accesstheapp)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 1. <a name='Gettingstarted'></a>Getting started
 
-## Build
+### 1.1. <a name='Required'></a>Required
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [NodeJS](https://nodejs.org/) - (v18.16.1 or latest)
+- [NPM](https://www.npmjs.com/)
 
-## Running unit tests
+#### 1.1.1. <a name='Installtheangular'></a>Install the Angular
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run to install the Angular:
 
-## Running end-to-end tests
+```bash
+ npm install -g @angular/cli
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### 1.1.2. <a name='Installthedependencies'></a>Install the dependencies
 
-## Further help
+Run to install the dependencies:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ npm install
+```
+
+### 1.2. <a name='RunningTheApp'></a>Running the app
+
+```bash
+ npm run start
+```
+
+### 1.3. <a name='Test'></a>Test
+
+```bash
+ npm run test
+```
+
+### 1.4. <a name='Build'></a>Build
+
+```bash
+ npm run build
+```
+
+### 1.4. <a name='Accesstheapp'></a>Access the app
+
+After executing the command to run the app, access the address via browser:
+
+- [Shopping cart](http://localhost:4200)
+
+```bash
+ http://localhost:4200
+```
